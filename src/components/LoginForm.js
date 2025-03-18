@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../store/authSlice";
 import axios from "axios";
-import { toast } from "react-toastify"; // ✅ Import Toastify
+import { toast } from "react-toastify";
+import "../components/styles/LoginForm.css";  // ✅ Import flashy CSS
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const LoginForm = () => {
 
     const initialValues = { email: "", password: "" };
 
-    // ✅ Improved Validation Schema
+    // ✅ Enhanced Validation Schema
     const validationSchema = Yup.object({
         email: Yup.string()
             .email("⚠️ Invalid email format")
@@ -29,9 +30,9 @@ const LoginForm = () => {
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
             const response = await axios.post("http://localhost:5293/api/auth/login", values);
-            dispatch(loginSuccess(response.data)); // ✅ Store token in Redux
+            dispatch(loginSuccess(response.data));
             toast.success("✅ Login successful! Redirecting...");
-            setTimeout(() => navigate("/dashboard"), 2000); // ✅ Redirect after toast
+            setTimeout(() => navigate("/dashboard"), 2000);
         } catch (error) {
             toast.error("❌ Login failed: " + (error.response?.data?.message || "Invalid credentials"));
         }
@@ -39,27 +40,37 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="container mt-5">
-            <h2>🔑 Login</h2>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({ isSubmitting }) => (
-                    <Form>
-                        <div className="mb-3">
-                            <label>Email:</label>
-                            <Field type="email" name="email" className="form-control" />
-                            <ErrorMessage name="email" component="div" className="text-danger mt-1" />
-                        </div>
-                        <div className="mb-3">
-                            <label>Password:</label>
-                            <Field type="password" name="password" className="form-control" />
-                            <ErrorMessage name="password" component="div" className="text-danger mt-1" />
-                        </div>
-                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                            {isSubmitting ? "Logging in..." : "Login"}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+        <div className="login-container"> 
+            <div className="animated-bg"></div> 
+            <div className="login-card">
+                <h2 className="login-title">🔑 Welcome Back!</h2>
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    {({ isSubmitting }) => (
+                        <Form className="login-form">
+                            
+                            <div className="">
+                                <label>Email:</label>
+                                <Field type="email" name="email" className="form-control login-input" />
+                                <ErrorMessage name="email" component="div" className="text-danger mt-1" />
+                            </div>
+
+                            
+                            <div className="">
+                                <label>Password:</label>
+                                <Field type="password" name="password" className="form-control login-input" />
+                                <ErrorMessage name="password" component="div" className="text-danger mt-1" />
+                            </div>
+
+                            
+                            <button type="submit" className="btn login-btn" disabled={isSubmitting}>
+                                {isSubmitting ? "Logging in..." : "Login"}
+                            </button>
+
+                            
+                        </Form>
+                    )}
+                </Formik>
+            </div>
         </div>
     );
 };

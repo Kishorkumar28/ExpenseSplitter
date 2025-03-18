@@ -87,25 +87,20 @@ const SettleDebt = ({ groupId, onDebtSettled }) => {
     };
 
     return (
-        <div className="mt-3">
-            <h4>Settle Debt</h4>
-            <form onSubmit={handleSettleDebt}>
+        <div className="settle-debt-container">
+            <h2 id="settle-debt">Settle Debt</h2>
+            <form onSubmit={handleSettleDebt} className="debt-input-form">
                 {/* ✅ Auto-assign debtor (logged-in user) */}
-                <div className="mb-2">
-                    <label>Debtor</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={userName ? `${userName} (ID: ${userId})` : "Loading..."}
-                        disabled
-                    />
+                <div className="debt-input-div list-group-item">
+                    <h3>Debtor</h3>
+                    <span>{userName ? `${userName} (ID: ${userId})` : "Loading..."}</span>
                 </div>
 
                 {/* ✅ Select Creditor (Only people the user owes) */}
-                <div className="mb-2">
-                    <label>Creditor</label>
+                <div className="debt-input-div list-group-item">
+                    <h3>Creditor</h3>
                     <select
-                        className="form-control"
+                        className="form-control debt-input-field"
                         value={creditorId}
                         onChange={(e) => setCreditorId(e.target.value)}
                         required
@@ -124,18 +119,18 @@ const SettleDebt = ({ groupId, onDebtSettled }) => {
                 </div>
 
                 {/* ✅ Amount Field */}
-                <div className="mb-2">
-                    <label>Amount</label>
+                <div className="debt-input-div list-group-item">
+                    <h3>Amount</h3>
                     <input
                         type="number"
-                        className="form-control"
+                        className="form-control debt-input-field"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         required
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Settle Debt</button>
+                <button type="submit" className="btn btn-primary group-button">Settle Debt</button>
             </form>
         </div>
     );

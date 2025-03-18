@@ -84,17 +84,24 @@ const GroupExpenses = () => {
 
     return (
         <div className="container-expense-form">
-            <h1>Group Expenses</h1>
+            <h1 id="group-expenses">Group Expenses</h1>
 
             {error && <div className="alert alert-danger">{error}</div>}
             {loading && <p>Loading expenses...</p>}
 
             {!loading && (
-                <>
+                <>  
+                <div className="expense-and-settle">
                     <ExpenseForm groupId={groupId} onExpenseAdded={fetchExpenses} />
-                    <ExpenseList expenses={expenses} />
-                    <BalanceList groupId={groupId} />
                     <SettleDebt groupId={groupId} onDebtSettled={fetchExpenses} />
+                </div>
+                <BalanceList groupId={groupId} />
+                
+                    <ExpenseList expenses={expenses} />
+                    
+                
+                    
+                    
                 </>
             )}
         </div>

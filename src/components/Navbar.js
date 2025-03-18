@@ -52,9 +52,7 @@ const Navbar = () => {
                                             <div className="profile-icon">
                                                 <Link className="dropdown-item" to="/profile"><i className="fa-solid fa-user"></i> View Profile</Link>
                                             </div>
-                                            <div className="settings-icon">
-                                                <Link className="dropdown-item" to="/settings"><i className="fa-solid fa-cogs"></i> Settings</Link>
-                                            </div>
+                                            
                                             <div><hr className="dropdown-divider" /></div>
                                             <div className="logout-icon  " onClick={handleLogout}>
                                                 <i className="fa-solid fa-right-from-bracket"> </i> Logout
@@ -66,14 +64,16 @@ const Navbar = () => {
                            
                             
                         ) : (
-                            <>
+                            <div className="navbar-container">
+                                
+                            
                                 <div className="nav-item">
                                     <Link className="nav-link text-white" to="/login">🔑 Login</Link>
                                 </div>
                                 <div className="nav-item">
                                     <Link className="nav-link text-white" to="/register">📝 Register</Link>
                                 </div>
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>

@@ -53,24 +53,24 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
 
     return (
         <div className="expense-form-div" >
-            <h3>Add Expense</h3>
+            <h2 id="add-expense">Add Expense</h2>
             {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={handleSubmit} className="expense-input-form" >
-                <div className="mb-2 expense-input-div">
+            <form onSubmit={handleSubmit} className="expense-input-form " >
+                <div id="add-expense-desc" className="mb-2 expense-input-div list-group-item">
                     <h3>Description</h3>
                     <input
                         type="text"
-                        className="form-control"
+                        className="form-control expense-input-field"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
                 </div>
-                <div className="mb-2 expense-input-div">
+                <div className="mb-2 expense-input-div list-group-item" id="expense-amount">
                     <h3>Amount</h3>
                     <input
                         type="number"
-                        className="form-control"
+                        className="form-control expense-input-field"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         required
@@ -78,7 +78,7 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
                         step="0.01" // ✅ Ensure decimal values can be entered
                     />
                 </div>
-                <button type="submit" className="btn btn-primary">Add Expense</button>
+                <button type="submit" id="add-expense-button" className="btn btn-primary group-button">Add Expense</button>
             </form>
         </div>
     );

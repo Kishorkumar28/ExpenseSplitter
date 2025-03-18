@@ -29,26 +29,31 @@ body{
     display: flex;
     flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
     justify-content: flex-start;  /* ✅ Centers items horizontally */
-    gap: 16px;  /* ✅ Adds spacing between items */
+      /* ✅ Adds spacing between items */
+    align-items: center !important;
     background-color: white;
     overflow: hidden; /* ✅ Hides overflowing text */
     text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
     white-space: nowrap;
+    
 }
 
 
 .user-dash-groups{
-    width: 20% !important;
+    width: 20vw !important;
     display: flex !important;
     flex-direction: row !important;
     justify-content: space-between !important;
-    margin: 15px !important;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
     background-color: rgb(248, 237, 221) !important;
     padding: 15px !important;
     border-radius: 10px !important;
     overflow: hidden; /* ✅ Hides overflowing text */
     text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
     white-space: nowrap;
+    margin-left: 30px !important;
 }
 .your-groups{
     display: flex;
@@ -58,23 +63,29 @@ body{
 
 /* 🔹 Make the link look like a button */
 .view-group-btn {
-    display: inline-block;  
+    display: flex;  /* Enables flexbox */
+    align-items: center;  /* Centers vertically */
+    justify-content: center;  /* Centers horizontally */
     font-size: 1rem;  /* Adjust text size */
     font-weight: 600;
     transition: transform 0.2s ease-in-out, background-color 0.3s, box-shadow 0.3s;
     border-radius: 5px;
-    
+    height: 30px;
+    padding: 5px 10px; /* Adjust padding for better spacing */
+    text-align: center; /* Ensures text stays centered */
+    cursor: pointer; /* Makes it obvious it's clickable */
 }
+
 
 /* 🔹 Enlarge Button on Hover */
 .view-group-btn:hover {
-    transform: scale(1.1);  /* Slightly enlarges button */
+      /* Slightly enlarges button */
     background-color: #5595f5 !important;  /* Darker blue */
-    padding: 5px;
+
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a shadow */
 }
 
 /* 🔹 Click Effect (Shrink Slightly) */
 .view-group-btn:active {
-    transform: scale(0.95);  /* Shrinks slightly when clicked */
+    transform: scale(1);  /* Shrinks slightly when clicked */
 }

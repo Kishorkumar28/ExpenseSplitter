@@ -37,7 +37,7 @@ const GroupForm = () => {
 
     return (
         <form onSubmit={handleSubmit} className="mb-3 group-form ">
-            <div className="mb-2 group-input">
+            <div className="mb-2 group-input list-group-item">
                 <h2>Group Name</h2>
                 <input
                     type="text"

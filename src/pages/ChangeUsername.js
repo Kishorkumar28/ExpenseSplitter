@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import "../components/styles/ChangeUsername.css";
 
 const ChangeUsername = () => {
     const token = useSelector(state => state.auth.token);
@@ -30,17 +31,17 @@ const ChangeUsername = () => {
     };
 
     return (
-        <div className="container mt-4">
-            <h3>Change Username</h3>
+        <div className="change-username-container">
+            <h1>Change Username</h1>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
                 {({ isSubmitting }) => (
                     <Form>
                         <div className="mb-3">
-                            <label>New Username:</label>
-                            <Field type="text" name="newUsername" className="form-control" />
-                            <ErrorMessage name="newUsername" component="div" className="text-danger" />
+                            <h2>New Username:</h2>
+                            <Field type="text" name="newUsername" className="form-control change-username-input" />
+                            <ErrorMessage name="newUsername" component="div" className="error-message" />
                         </div>
-                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                        <button type="submit" className="btn change-username-btn" disabled={isSubmitting}>
                             {isSubmitting ? "Updating..." : "Change Username"}
                         </button>
                     </Form>
@@ -48,6 +49,7 @@ const ChangeUsername = () => {
             </Formik>
         </div>
     );
+    
 };
 
 export default ChangeUsername;

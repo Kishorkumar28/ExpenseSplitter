@@ -2,21 +2,24 @@ import React from "react";
 
 const ExpenseList = ({ expenses }) => {
     return (
-        <div>
-            <h4>Group Expenses</h4>
+        <div className="all-expenses">
+            <h1>All Expenses</h1>
             {expenses.length === 0 ? (
                 <p>No expenses found.</p>
             ) : (
-                <ul className="list-group">
-                    {expenses.map((expense) => (
-                        <li key={expense.id} className="list-group-item">
+                <div className="list-group expense-list">
+                    {expenses.map((expense, index) => (
+                        <div key={expense.id} className="list-group-item">
+                            <strong>{index + 1}. </strong>
                             {expense.description} - ₹{expense.amount} (Paid by: {expense.paidByUsername})
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
 };
+
+
 
 export default ExpenseList;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "../components/styles/Profile.css";
 
 const Profile = () => {
     const token = useSelector(state => state.auth.token);
@@ -23,22 +24,22 @@ const Profile = () => {
     };
 
     return (
-        <div className="container mt-4">
-            <h2>👤 My Profile</h2>
+        <div className="profile-container">
+            <h2 className="profile-title">👤 My Profile</h2>
             {user ? (
-                <div className="card p-3">
+                <div className="profile-info">
                     <p><strong>Username:</strong> {user.username}</p>
                     <p><strong>Email:</strong> {user.email}</p>
 
-                    {/* Change Username */}
-                    <Link to="/change-username" className="btn btn-warning mb-2">
-                        ✏️ Change Username
-                    </Link>
-
-                    {/* Change Password */}
-                    <Link to="/change-password" className="btn btn-danger">
-                        🔒 Change Password
-                    </Link>
+                    {/* Profile Actions */}
+                    <div className="profile-actions">
+                        <Link to="/change-username" className="btn btn-warning">
+                            ✏️ Change Username
+                        </Link>
+                        <Link to="/change-password" className="btn btn-danger">
+                            🔒 Change Password
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <p>Loading user details...</p>

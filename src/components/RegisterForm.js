@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../components/services/authService"; // ✅ Import API function
 import { toast } from "react-toastify"; // ✅ Import Toastify
+import "../components/styles/RegisterForm.css";  // ✅ Import flashy CSS
 
 const RegisterForm = () => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const RegisterForm = () => {
         try {
             await registerUser(values.name, values.email, values.password);
             toast.success("✅ Registration successful! Redirecting to login...");
-            setTimeout(() => navigate("/login"), 2000); // ✅ Redirect after 2s for toast display
+            setTimeout(() => navigate("/login"), 2000);
         } catch (error) {
             toast.error("❌ Registration failed: " + (error.response?.data?.message || "Server error"));
         }
@@ -39,32 +40,42 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className="container mt-5">
-            <h2>📝 Register</h2>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({ isSubmitting }) => (
-                    <Form>
-                        <div className="mb-3">
-                            <label>Name:</label>
-                            <Field type="text" name="name" className="form-control" />
-                            <ErrorMessage name="name" component="div" className="text-danger mt-1" />
-                        </div>
-                        <div className="mb-3">
-                            <label>Email:</label>
-                            <Field type="email" name="email" className="form-control" />
-                            <ErrorMessage name="email" component="div" className="text-danger mt-1" />
-                        </div>
-                        <div className="mb-3">
-                            <label>Password:</label>
-                            <Field type="password" name="password" className="form-control" />
-                            <ErrorMessage name="password" component="div" className="text-danger mt-1" />
-                        </div>
-                        <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-                            {isSubmitting ? "Registering..." : "Register"}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+        <div className="register-container"> {/* ✅ Apply Flashy UI */}
+            <div className="register-animated-bg"></div> {/* ✅ Animated Background */}
+            <div className="register-card">
+                <h2 className="register-title">📝 Create Your Account</h2>
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                    {({ isSubmitting }) => (
+                        <Form className="register-form">
+                            {/* 🌟 Name Input */}
+                            <div className="mb-3">
+                                <label>Name:</label>
+                                <Field type="text" name="name" className="form-control register-input" />
+                                <ErrorMessage name="name" component="div" className="text-danger mt-1" />
+                            </div>
+
+                            {/* 🌟 Email Input */}
+                            <div className="mb-3">
+                                <label>Email:</label>
+                                <Field type="email" name="email" className="form-control register-input" />
+                                <ErrorMessage name="email" component="div" className="text-danger mt-1" />
+                            </div>
+
+                            {/* 🌟 Password Input */}
+                            <div className="mb-3">
+                                <label>Password:</label>
+                                <Field type="password" name="password" className="form-control register-input" />
+                                <ErrorMessage name="password" component="div" className="text-danger mt-1" />
+                            </div>
+
+                            {/* 🔥 Register Button */}
+                            <button type="submit" className="btn register-btn" disabled={isSubmitting}>
+                                {isSubmitting ? "Registering..." : "Sign Up"}
+                            </button>
+                        </Form>
+                    )}
+                </Formik>
+            </div>
         </div>
     );
 };

@@ -62,7 +62,7 @@ const BalanceList = ({ groupId }) => {
 
     return (
         <div>
-            <h4>Group Balances</h4>
+            <h1 id="group-balances">Group Balances</h1>
             {error && <p className="text-danger">{error}</p>}
             {loading && <p>Loading balances...</p>}
     
@@ -73,13 +73,13 @@ const BalanceList = ({ groupId }) => {
     
             {/* ✅ Show list only if balances exist */}
             {!loading && balances.length > 0 && (
-                <ul className="list-group">
+                <div className="list-group">
                     {balances.map(({ debtorId, debtorName, creditorId, creditorName, amount }) => (
-                        <li key={`${debtorId}-${creditorId}`} className="list-group-item">
+                        <div key={`${debtorId}-${creditorId}`} id="balance-values" className="list-group-item balances-list">
                             User {debtorId} ({debtorName}) owes ₹{(amount ?? 0).toFixed(2)} to User {creditorId} ({creditorName})
-                        </li>
+                        </div>
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
