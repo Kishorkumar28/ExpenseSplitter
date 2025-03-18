@@ -1,0 +1,21 @@
+.container-expense-form{
+    height: 100vw !important;
+}
+
+.expense-input-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.expense-input-form{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.expense-form-div{
+    height: 20vh !important;
+    padding-left: 40px;
+}

@@ -7,10 +7,16 @@ import Groups from "./pages/Group";
 import Navbar from "./components/Navbar";
 import GroupExpenses from "./pages/GroupExpenses";
 import PrivateRoute from "./components/utils/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import Profile from "./pages/Profile";
+import ChangePassword from "./pages/ChangePassword";
+import ChangeUsername from "./pages/ChangeUsername";
 
 const App = () => {
     return (
-        <Router>
+        <>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+            <Router>
             <Navbar />
             <div className="container mt-3">
                 <Routes>
@@ -23,10 +29,14 @@ const App = () => {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/groups" element={<Groups />} />
                         <Route path="/groups/:groupId/expenses" element={<GroupExpenses />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/change-password" element={<ChangePassword />} />
+                        <Route path="/change-username" element={<ChangeUsername />} />
                     </Route>
                 </Routes>
             </div>
         </Router>
+        </>
     );
 };
 

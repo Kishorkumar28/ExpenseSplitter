@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "../axiosInstance"; // ✅ Use global axios instance
+import { toast } from "react-toastify";
+import "../styles/Expenseform.css";
 
 const ExpenseForm = ({ groupId, onExpenseAdded }) => {
     const [description, setDescription] = useState("");
@@ -13,7 +15,7 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
         setError("");
 
         if (!description.trim() || !amount) {
-            setError("Please fill in all fields.");
+            toast.warn("⚠️ Please enter a valid description and amount.");
             return;
         }
 
@@ -35,7 +37,7 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            alert("Expense added successfully!");
+            toast.success("✅ Expense added successfully!");
             setDescription("");
             setAmount("");
             onExpenseAdded(); // ✅ Refresh expenses list
@@ -50,12 +52,12 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
     };
 
     return (
-        <div>
-            <h4>Add Expense</h4>
+        <div className="expense-form-div" >
+            <h3>Add Expense</h3>
             {error && <div className="alert alert-danger">{error}</div>}
-            <form onSubmit={handleSubmit}>
-                <div className="mb-2">
-                    <label>Description</label>
+            <form onSubmit={handleSubmit} className="expense-input-form" >
+                <div className="mb-2 expense-input-div">
+                    <h3>Description</h3>
                     <input
                         type="text"
                         className="form-control"
@@ -64,8 +66,8 @@ const ExpenseForm = ({ groupId, onExpenseAdded }) => {
                         required
                     />
                 </div>
-                <div className="mb-2">
-                    <label>Amount</label>
+                <div className="mb-2 expense-input-div">
+                    <h3>Amount</h3>
                     <input
                         type="number"
                         className="form-control"

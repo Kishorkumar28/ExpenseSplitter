@@ -1,6 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../components/services/authService";
+import { toast } from "react-toastify";
+import "./styles/Navbar.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -8,38 +12,70 @@ const Navbar = () => {
 
     const handleLogout = () => {
         logoutUser();
+        toast.info("👋 Logged out successfully!");
         navigate("/login");
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Expense Splitter</Link>
-                <div className="collapse navbar-collapse">
-                    <ul className="navbar-nav ms-auto">
+        <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+            <div className="">
+                
+
+                {/* Mobile Toggle Button */}
+                {/* <button 
+                    className="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button> */}
+
+                <div className="collapse navbar-collapse " id="navbarNav">
+                    <div className="navbar-nav ms-auto">
                         {token ? (
-                            <>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/groups">Groups</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <button className="btn btn-danger ms-2" onClick={handleLogout}>Logout</button>
-                                </li>
-                            </>
+                             
+                                <div className="navbar-container" >
+                                    <div className="navbar-left">
+                                            <div className="nav-item profile-icon">
+                                                <Link className="nav-link text-white" to="/dashboard"><i className="fa-solid fa-house"></i> Dashboard</Link>
+                                            </div>
+                                            <div className="nav-item profile-icon">
+                                                <Link className="nav-link text-white" to="/groups"><i className="fa-solid fa-user-group"></i> Groups</Link>
+                                            </div>
+                                    </div>
+                                    
+
+                                    {/* Profile Dropdown */}
+                                        
+                                        <div className="dropdown-menu dropdown-menu-end navbar-right">
+                                            <div className="profile-icon">
+                                                <Link className="dropdown-item" to="/profile"><i className="fa-solid fa-user"></i> View Profile</Link>
+                                            </div>
+                                            <div className="settings-icon">
+                                                <Link className="dropdown-item" to="/settings"><i className="fa-solid fa-cogs"></i> Settings</Link>
+                                            </div>
+                                            <div><hr className="dropdown-divider" /></div>
+                                            <div className="logout-icon  " onClick={handleLogout}>
+                                                <i className="fa-solid fa-right-from-bracket"> </i> Logout
+                                            </div>
+
+                                        </div>
+                                    
+                                </div>
+                           
+                            
                         ) : (
                             <>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/login">Login</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-link" to="/register">Register</Link>
-                                </li>
+                                <div className="nav-item">
+                                    <Link className="nav-link text-white" to="/login">🔑 Login</Link>
+                                </div>
+                                <div className="nav-item">
+                                    <Link className="nav-link text-white" to="/register">📝 Register</Link>
+                                </div>
                             </>
                         )}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </nav>

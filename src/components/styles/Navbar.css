@@ -1,0 +1,66 @@
+.navbar-container{
+    width:100% !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+}
+.navbar-left{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width:50% !important;
+}
+
+.navbar-right{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width:100% !important;
+    margin-right: 20px;
+
+}
+a {
+    text-decoration: none !important;
+}
+
+.profile-icon {
+    cursor: pointer;  /* ✅ Enables clicking */
+    font-size: 1.2rem;  /* ✅ Adjust icon size */
+    transition: color 0.8s ease-in-out, transform 0.2s;
+    border-radius: 9px;
+    padding: 5px;
+}
+
+/* ✅ Change color & add hover effect */
+.profile-icon:hover {
+    transform: scale(1.1);  /* Slightly enlarges the icon */
+}
+
+.settings-icon {
+    cursor: pointer;  /* ✅ Enables clicking */
+    font-size: 1.2rem;  /* ✅ Adjust icon size */
+    transition: color 0.8s ease-in-out, transform 0.2s;
+}
+
+/* ✅ Change color & add hover effect */
+.settings-icon:hover {
+    transform: scale(1.1);  /* Slightly enlarges the icon */
+}
+
+.logout-icon {
+    cursor: pointer;  /* ✅ Enables clicking */
+    font-size: 1.2rem;  /* ✅ Adjust icon size */
+    color: #dc3545;
+    transition: color 0.8s ease-in-out, transform 0.2s;
+}
+
+/* ✅ Change color & add hover effect */
+.logout-icon:hover {
+    color: #dc3545;  /* Darker red on hover */
+    transform: scale(1.1);  /* Slightly enlarges the icon */
+}

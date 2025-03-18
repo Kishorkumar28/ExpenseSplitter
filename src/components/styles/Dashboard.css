@@ -1,0 +1,80 @@
+body{
+    height: 110vh;
+}
+
+
+.dash-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(248, 237, 221);
+}
+.dash-feature{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-top: 10px;
+    
+}
+
+.dash-features{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
+    justify-content: flex-start;  /* ✅ Centers items horizontally */
+    gap: 16px;  /* ✅ Adds spacing between items */
+    background-color: white;
+    overflow: hidden; /* ✅ Hides overflowing text */
+    text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
+    white-space: nowrap;
+}
+
+
+.user-dash-groups{
+    width: 20% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    margin: 15px !important;
+    background-color: rgb(248, 237, 221) !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+    overflow: hidden; /* ✅ Hides overflowing text */
+    text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
+    white-space: nowrap;
+}
+.your-groups{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+/* 🔹 Make the link look like a button */
+.view-group-btn {
+    display: inline-block;  
+    font-size: 1rem;  /* Adjust text size */
+    font-weight: 600;
+    transition: transform 0.2s ease-in-out, background-color 0.3s, box-shadow 0.3s;
+    border-radius: 5px;
+    
+}
+
+/* 🔹 Enlarge Button on Hover */
+.view-group-btn:hover {
+    transform: scale(1.1);  /* Slightly enlarges button */
+    background-color: #5595f5 !important;  /* Darker blue */
+    padding: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a shadow */
+}
+
+/* 🔹 Click Effect (Shrink Slightly) */
+.view-group-btn:active {
+    transform: scale(0.95);  /* Shrinks slightly when clicked */
+}

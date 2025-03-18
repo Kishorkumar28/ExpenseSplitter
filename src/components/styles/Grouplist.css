@@ -1,0 +1,97 @@
+.container{
+    background-color: rgb(248, 237, 221);
+}
+
+.user-group {
+    height: 100% !important;
+    width: 100% !important;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
+    justify-content: flex-start;  /* ✅ Centers items horizontally */
+    gap: 5px;  /* ✅ Adds spacing between items */
+    
+}
+.user-group-join {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
+    justify-content: flex-start;  /* ✅ Centers items horizontally */
+    gap: 5px;  /* ✅ Adds spacing between items */
+    margin-left: 20px;
+}
+
+.user-groups-join {
+    background-color: white !important;
+    width: 15%;
+    display: flex;  /* ✅ Flexbox keeps text & button in one line */
+    align-items: center; /* ✅ Centers text & button vertically */
+    justify-content: space-between; /* ✅ Keeps text on left & button on right */
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    background-color: rgb(248, 237, 221);
+    
+    overflow: hidden; /* ✅ Hides overflowing text */
+    text-overflow: ellipsis; /* ✅ Shows "..." for long text */
+    white-space: nowrap; /* ✅ Prevents text from wrapping */
+}
+
+
+.user-groups {
+    background-color: white !important;
+    width: 8%;
+    display: block; /* ✅ Required for ellipsis */
+    margin: 15px;
+    background-color: rgb(248, 237, 221) !important;
+    padding: 15px; 
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    overflow: hidden; /* ✅ Hides overflowing text */
+    text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
+    white-space: nowrap; /* ✅ Prevents text from wrapping */
+    color: rgb(255, 255, 255) !important;
+}
+
+
+.user-groups:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.join-group-btn {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    font-size: 1rem;  /* Adjust text size */
+    font-weight: 600;
+    transition: transform 0.2s ease-in-out, background-color 0.3s, box-shadow 0.3s;
+    background-color: transparent !important;
+    border-radius: 5px;
+}
+
+/* 🔹 Enlarge Button on Hover */
+.join-group-btn:hover {
+    transform: scale(1.1);  /* Slightly enlarges button */
+    background-color: #5595f5 !important;
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);  /* Adds a shadow */
+}
+
+/* 🔹 Click Effect (Shrink Slightly) */
+.join-group-btn:active {
+    transform: scale(0.95);  /* Shrinks slightly when clicked */
+}
+
+/* ✅ Disable Hover and Click Effects When Button is Disabled */
+.join-group-btn:disabled,
+.join-group-btn:disabled:hover,
+.join-group-btn:disabled:active {
+    transform: none;  /* ✅ Remove scale effect */  /* ✅ Grey out the button */
+    color: black !important;  /* ✅ Make text less prominent */
+    cursor: not-allowed !important;  /* ✅ Show 'not-allowed' cursor */
+    box-shadow: none !important;  /* ✅ Remove shadow */
+    background-color: transparent !important;
+}

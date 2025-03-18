@@ -6,6 +6,7 @@ import ExpenseForm from "../components/expenses/ExpenseForm";
 import ExpenseList from "../components/expenses/ExpensesList";
 import BalanceList from "../components/BalanceList";
 import SettleDebt from "../components/SettleDebt";
+import "../components/styles/Expenseform.css";
 
 const GroupExpenses = () => {
     const { groupId } = useParams();
@@ -82,8 +83,8 @@ const GroupExpenses = () => {
     };
 
     return (
-        <div className="container mt-4">
-            <h2>Group Expenses</h2>
+        <div className="container-expense-form">
+            <h1>Group Expenses</h1>
 
             {error && <div className="alert alert-danger">{error}</div>}
             {loading && <p>Loading expenses...</p>}

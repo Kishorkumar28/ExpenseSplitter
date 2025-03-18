@@ -22,7 +22,7 @@ const BalanceList = ({ groupId }) => {
             }
         };
         ws.onerror = (error) => console.error("❌ WebSocket Error:", error);
-        ws.onclose = () => console.log("❌ WebSocket Disconnected");
+        // ws.onclose = () => console.log("❌ WebSocket Disconnected");
     
         return () => ws.close();
     }, [groupId]);
