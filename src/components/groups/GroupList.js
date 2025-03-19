@@ -77,14 +77,12 @@ const GroupList = () => {
             {/* ✅ Display Joined Groups */}
 {!loading && joinedGroups.length > 0 && (
     <div className="list-group user-group">
-        {joinedGroups.map((group) => (
-            <div key={group.groupId} className="list-group-item user-groups">
-                <Link to={`/groups/${group.groupId}/expenses`} className="">
-                    {group.name.length > 20 ? `${group.name.substring(0, 20)}...` : group.name}
-                </Link>
-            </div>
-        ))}
-    </div>
+    {joinedGroups.map((group) => (
+        <Link to={`/groups/${group.groupId}/expenses`} key={group.groupId} className="list-group-item user-groups">
+            {group.name.length > 20 ? `${group.name.substring(0, 20)}...` : group.name}
+        </Link>
+    ))}
+</div>
 )}
 
 {/* ✅ Display Available Groups to Join */}
