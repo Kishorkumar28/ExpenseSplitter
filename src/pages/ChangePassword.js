@@ -40,34 +40,38 @@ const ChangePassword = () => {
     };
 
     return (
-        <div className="change-password-container">
-            <h1>Change Password</h1>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({ isSubmitting }) => (
-                    <Form>
-                        <div className="mb-3">
-                            <h3>Current Password:</h3>
-                            <Field type="password" name="currentPassword" className="form-control change-password-input" />
-                            <ErrorMessage name="currentPassword" component="div" className="error-message" />
-                        </div>
-                        <div className="mb-3">
-                            <h3>New Password:</h3>
-                            <Field type="password" name="newPassword" className="form-control change-password-input" />
-                            <ErrorMessage name="newPassword" component="div" className="error-message" />
-                            <p className="password-hint">⚠️ Must include at least one uppercase letter, one number, and one special character.</p>
-                        </div>
-                        <div className="mb-3">
-                            <h3>Confirm Password:</h3>
-                            <Field type="password" name="confirmPassword" className="form-control change-password-input" />
-                            <ErrorMessage name="confirmPassword" component="div" className="error-message" />
-                        </div>
-                        <button type="submit" className="btn change-password-btn" disabled={isSubmitting}>
-                            {isSubmitting ? "Updating..." : "Change Password"}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+
+        <div className="change-password-outerdiv" >
+            <div className="change-password-container">
+                        <h1>Change Password</h1>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                            {({ isSubmitting }) => (
+                                <Form>
+                                    <div className="mb-3">
+                                        <h3>Current Password:</h3>
+                                        <Field type="password" name="currentPassword" className="form-control change-password-input" />
+                                        <ErrorMessage name="currentPassword" component="div" className="error-message" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <h3>New Password:</h3>
+                                        <Field type="password" name="newPassword" className="form-control change-password-input" />
+                                        <ErrorMessage name="newPassword" component="div" className="error-message" />
+                                        <p className="password-hint">⚠️ Must include at least one uppercase letter, one number, and one special character.</p>
+                                    </div>
+                                    <div className="mb-3">
+                                        <h3>Confirm Password:</h3>
+                                        <Field type="password" name="confirmPassword" className="form-control change-password-input" />
+                                        <ErrorMessage name="confirmPassword" component="div" className="error-message" />
+                                    </div>
+                                    <button type="submit" className="btn change-password-btn" disabled={isSubmitting}>
+                                        {isSubmitting ? "Updating..." : "Change Password"}
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
+            </div>
         </div>
+        
     );
     
 };

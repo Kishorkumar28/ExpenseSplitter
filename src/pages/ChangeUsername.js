@@ -31,23 +31,27 @@ const ChangeUsername = () => {
     };
 
     return (
-        <div className="change-username-container">
-            <h1>Change Username</h1>
-            <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-                {({ isSubmitting }) => (
-                    <Form>
-                        <div className="mb-3">
-                            <h2>New Username:</h2>
-                            <Field type="text" name="newUsername" className="form-control change-username-input" />
-                            <ErrorMessage name="newUsername" component="div" className="error-message" />
-                        </div>
-                        <button type="submit" className="btn change-username-btn" disabled={isSubmitting}>
-                            {isSubmitting ? "Updating..." : "Change Username"}
-                        </button>
-                    </Form>
-                )}
-            </Formik>
+        <div className="change-username-div" >
+                <div className="change-username-container">
+                    <h1>Change Username</h1>
+                        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+                            {({ isSubmitting }) => (
+                                <Form>
+                                    <div className="mb-3">
+                                        <h2>New Username:</h2>
+                                        <Field type="text" name="newUsername" className="form-control change-username-input" />
+                                        <ErrorMessage name="newUsername" component="div" className="error-message" />
+                                    </div>
+                                    <button type="submit" className="btn change-username-btn" disabled={isSubmitting}>
+                                        {isSubmitting ? "Updating..." : "Change Username"}
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
+                </div>
+
         </div>
+        
     );
     
 };

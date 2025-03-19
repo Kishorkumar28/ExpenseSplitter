@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "../components/styles/WelcomePage.css"; // Import the CSS
 
 const WelcomePage = () => {
+    // ✅ Check if user is logged in (assuming token-based authentication)
+    const isLoggedIn = !!localStorage.getItem("token"); // or sessionStorage
+
     return (
         <div className="welcome-container">
             {/* Background Animation */}
@@ -15,10 +18,15 @@ const WelcomePage = () => {
                     Manage group expenses and share costs seamlessly with your friends and family.
                 </p>
 
-                <div className="welcome-buttons">
-                    <Link to="/register" className="btn welcome-btn signup-btn">Sign Up</Link>
-                    <Link to="/login" className="btn welcome-btn login-btn">Log In</Link>
-                </div>
+                {/* ✅ Hide login/register buttons if user is logged in */}
+                {isLoggedIn ? (
+                    <p className="logged-in-text">✅ Logged In</p> // ✅ Show "Logged In"
+                ) : (
+                    <div className="welcome-buttons">
+                        <Link to="/register" className="btn welcome-btn signup-btn">Sign Up</Link>
+                        <Link to="/login" className="btn welcome-btn login-btn">Log In</Link>
+                    </div>
+                )}
             </div>
         </div>
     );
