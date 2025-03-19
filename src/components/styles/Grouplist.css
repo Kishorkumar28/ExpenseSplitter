@@ -6,51 +6,51 @@
     height: 100% !important;
     width: 99% !important;
     display: flex;
-    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
-    justify-content: flex-start;  /* ✅ Centers items horizontally */
-    gap: 5px;  /* ✅ Adds spacing between items */
+    flex-wrap: wrap;  /*  Allows items to wrap to the next row */
+    justify-content: flex-start;  /*  Centers items horizontally */
+    gap: 5px;  /*  Adds spacing between items */
     
 }
 .user-group-join {
     width: 99% !important;
     height: 100% !important;
     display: flex;
-    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
-    justify-content: flex-start;  /* ✅ Centers items horizontally */
-    gap: 5px;  /* ✅ Adds spacing between items */
+    flex-wrap: wrap;  /*  Allows items to wrap to the next row */
+    justify-content: flex-start;  /*  Centers items horizontally */
+    gap: 5px;  /*  Adds spacing between items */
     padding-left: 20px;
 }
 
 .user-groups-join {
     background-color: white !important;
-    width: 15%;
-    display: flex;  /* ✅ Flexbox keeps text & button in one line */
-    align-items: center; /* ✅ Centers text & button vertically */
-    justify-content: space-between; /* ✅ Keeps text on left & button on right */
+    width: 70%;
+    display: flex;  /*  Flexbox keeps text & button in one line */
+    align-items: center; /*  Centers text & button vertically */
+    justify-content: space-between; /*  Keeps text on left & button on right */
     margin: 15px;
     padding: 15px;
     border-radius: 10px;
     transition: all 0.1s ease-in-out;
     background-color: rgb(248, 237, 221);
     
-    overflow: hidden; /* ✅ Hides overflowing text */
-    text-overflow: ellipsis; /* ✅ Shows "..." for long text */
-    white-space: nowrap; /* ✅ Prevents text from wrapping */
+    overflow: hidden; /*  Hides overflowing text */
+    text-overflow: ellipsis; /*  Shows "..." for long text */
+    white-space: nowrap; /*  Prevents text from wrapping */
 }
 
 
 .user-groups {
     background-color: white !important;
     width: 8%;
-    display: block; /* ✅ Required for ellipsis */
+    display: block; /*  Required for ellipsis */
     margin: 15px;
     background-color: rgb(248, 237, 221) !important;
     padding: 15px; 
     border-radius: 10px;
     transition: all 0.1s ease-in-out;
-    overflow: hidden; /* ✅ Hides overflowing text */
-    text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
-    white-space: nowrap; /* ✅ Prevents text from wrapping */
+    overflow: hidden; /*  Hides overflowing text */
+    text-overflow: ellipsis; /*  Shows "..." for overflow */
+    white-space: nowrap; /*  Prevents text from wrapping */
     color: black !important;
     font-weight: bold;
     
@@ -87,14 +87,14 @@
     transform: scale(0.95);  /* Shrinks slightly when clicked */
 }
 
-/* ✅ Disable Hover and Click Effects When Button is Disabled */
+/*  Disable Hover and Click Effects When Button is Disabled */
 .join-group-btn:disabled,
 .join-group-btn:disabled:hover,
 .join-group-btn:disabled:active {
-    transform: none;  /* ✅ Remove scale effect */  /* ✅ Grey out the button */
-    color: black !important;  /* ✅ Make text less prominent */
-    cursor: not-allowed !important;  /* ✅ Show 'not-allowed' cursor */
-    box-shadow: none !important;  /* ✅ Remove shadow */
+    transform: none;  /*  Remove scale effect */  /*  Grey out the button */
+    color: black !important;  /*  Make text less prominent */
+    cursor: not-allowed !important;  /*  Show 'not-allowed' cursor */
+    box-shadow: none !important;  /*  Remove shadow */
     background-color: transparent !important;
 }
 
@@ -106,4 +106,150 @@
 #groups-to-join-text{
     padding-left: 30px !important;
     padding-top: 10px !important;
+}
+
+/*  Container to hold group details and invite section */
+.group-container {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between; /*  Pushes content to both ends */
+    align-items: center; /*  Align items vertically */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 90px;
+}
+
+/*  Styling for the left side (Group Details) */
+.group-details {
+    flex: 1; /*  Takes available space */
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*  Styling for the right side (Invite Section) */
+.invite-section {
+    display: flex;
+    gap: 10px; /*  Adds spacing between input and button */
+}
+
+/*  Adjust input field width */
+.invite-section input {
+    width: 120px; /*  Adjust width as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*  Button Styling */
+.invite-section button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.invite-section button:hover {
+    background-color: #0056b3;
+}
+
+#my-joined-text{
+    margin-left: 60px !important;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*  Parent container: Uses Flexbox for two-column layout */
+.groups-layout {
+    display: flex;
+    justify-content: space-between; /*  Left & Right columns */
+    align-items: flex-start;
+    gap: 20px; /*  Adds spacing between columns */
+}
+
+/*  Left column: My Joined Groups */
+.joined-groups {
+    flex: 1; /*  Takes up 50% of space */
+    min-width: 45%;
+}
+
+/*  Right column: Group Invitations */
+.group-invitations {
+    flex: 1; /*  Takes up 50% of space */
+    min-width: 45%;
+    padding-top: 30px !important;
+}
+
+/*  Ensure items inside each section are properly spaced */
+.group-container, .user-group-join {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.group-invitation-container{
+    padding-top: 10px;
+}
+
+/*  Make the whole row clickable */
+/*  Make the whole row clickable */
+.group-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px; /*  Increase padding for better clickability */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+.group-clickable {
+    display: flex;
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
+    align-items: center;
+    height: 100% !important; 
+    width: 100% !important; 
+    
+
+}
+
+
+.group-container:hover {
+    background-color: #f1f1f1;
+}
+
+
+.invite-section {
+    display: flex;
+    gap: 10px;
+}
+
+.invite-section input,
+.invite-section button {
+    cursor: auto; /* Prevents pointer cursor inside input and button */
+}
+
+
+/*  Responsive Design: Stack columns on small screens */
+@media (max-width: 768px) {
+    .groups-layout {
+        flex-direction: column; /*  Stack items vertically on smaller screens */
+    }
+
+    .joined-groups, .group-invitations {
+        min-width: 100%; /*  Full width */
+    }
 }

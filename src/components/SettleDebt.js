@@ -58,33 +58,48 @@ const SettleDebt = ({ groupId, onDebtSettled }) => {
 
     const handleSettleDebt = async (e) => {
         e.preventDefault();
-
+    
         if (!creditorId || !amount) {
             toast.warn("⚠️ Please fill in all fields.");
             return;
         }
-
+    
+        const selectedCreditor = creditors.find(c => Number(c.creditorId) === Number(creditorId));
+        if (!selectedCreditor) {
+            toast.error("⚠️ Invalid creditor selected.");
+            return;
+        }
+    
+        const maxAmount = Number(selectedCreditor.amount);
+        const enteredAmount = Number(amount);
+    
+        if (enteredAmount > maxAmount) {
+            toast.error(`⚠️ You can only pay up to ₹${maxAmount.toFixed(2)}.`);
+            return;
+        }
+    
         try {
             await axios.post(
                 `http://localhost:5293/api/groups/${groupId}/settle`,
                 {
-                    debtorId: Number(userId), // ✅ Auto-set debtor as the logged-in user
+                    debtorId: Number(userId),
                     creditorId: Number(creditorId),
-                    amount: Number(amount)
+                    amount: enteredAmount
                 },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-
+    
             toast.success("✅ Debt settled successfully!");
             setCreditorId("");
             setAmount("");
-            onDebtSettled(); // Refresh balance list
-            fetchUserDebts(); // ✅ Refresh creditors list
+            onDebtSettled();
+            fetchUserDebts();
         } catch (error) {
             console.error("❌ Error settling debt:", error);
             toast.error(error.response?.data?.message || "Failed to settle debt.");
         }
     };
+    
 
     return (
         <div className="settle-debt-container">
