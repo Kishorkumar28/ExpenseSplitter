@@ -10,22 +10,25 @@ const BalanceList = ({ groupId }) => {
 
     useEffect(() => {
         fetchBalances();
+        
+        let ws = new WebSocket("ws://localhost:5293/ws");
     
-        const ws = new WebSocket("ws://localhost:5293/ws");
-    
-        ws.onopen = () => console.log("🔗 WebSocket Connected for Balances");
+        // ws.onopen = () => console.log("🔗 WebSocket Connected");
         ws.onmessage = (event) => {
-            console.log("📢 WebSocket Message:", event.data);
             if (event.data.startsWith("balance_updated") || event.data.startsWith("new_expense")) {
-                console.log("🔄 Refreshing balances...");
-                fetchBalances(); // 🔹 Refresh balances when expense is added
+                fetchBalances();
             }
         };
-        ws.onerror = (error) => console.error("❌ WebSocket Error:", error);
-        // ws.onclose = () => console.log("❌ WebSocket Disconnected");
     
-        return () => ws.close();
+        ws.onerror = (error) => console.error("❌ WebSocket Error:", error);
+    
+        return () => {
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                ws.close();
+            }
+        };
     }, [groupId]);
+    
         
     const fetchBalances = async () => {
         setLoading(true);
@@ -37,7 +40,7 @@ const BalanceList = ({ groupId }) => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
     
-            console.log("✅ Balance Fetch API Response:", response.data);
+            // console.log("✅ Balance Fetch API Response:", response.data);
             
             if (!response.data || response.data.length === 0) {
                 console.warn("⚠️ No outstanding debts in this group.");
@@ -68,7 +71,7 @@ const BalanceList = ({ groupId }) => {
     
             {/* ✅ Show message when there are no debts */}
             {!loading && balances.length === 0 && (
-                <p className="text-success">✅ All expenses are settled. No outstanding debts!</p>
+                <p className="text-success list-group-item" id="No-balance-values">✅ All expenses are settled. No outstanding debts!</p>
             )}
     
             {/* ✅ Show list only if balances exist */}

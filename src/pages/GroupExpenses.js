@@ -41,10 +41,10 @@ const GroupExpenses = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            console.log("✅ Fetched Expenses:", response.data);
+            // console.log("✅ Fetched Expenses:", response.data);
             setExpenses(response.data);
         } catch (error) {
-            console.error("❌ Error fetching expenses:", error);
+            // console.error("❌ Error fetching expenses:", error);
             setError("Failed to load expenses. Please try again.");
         } finally {
             setLoading(false);
@@ -55,29 +55,29 @@ const GroupExpenses = () => {
         const ws = new WebSocket("ws://localhost:5293/ws");
 
         ws.onopen = () => {
-            console.log("✅ WebSocket Connected");
+            // console.log("✅ WebSocket Connected");
             setSocket(ws);
         };
 
         ws.onmessage = (event) => {
-            console.log("📢 WebSocket Message Received:", event.data);
+            // console.log("📢 WebSocket Message Received:", event.data); //For Debugging
 
             if (event.data.startsWith("new_expense:")) {
                 const updatedGroupId = event.data.split(":")[1];
                 if (updatedGroupId === groupId) {
-                    console.log("🔄 Fetching updated expenses...");
+                    // console.log("🔄 Fetching updated expenses...");
                     fetchExpenses(); // ✅ Refresh expenses when a new expense is added
                 }
             }
 
             if (event.data === "debt_settled") {
-                console.log("💰 Debt settled, refreshing balances...");
+                // console.log("💰 Debt settled, refreshing balances...");
                 fetchExpenses(); // Refresh expenses
             }
         };
 
         ws.onclose = () => {
-            console.log("⚠️ WebSocket Disconnected. Reconnecting in 3s...");
+            // console.log("⚠️ WebSocket Disconnected. Reconnecting in 3s...");
             setTimeout(setupWebSocket, 3000);
         };
     };

@@ -37,10 +37,10 @@ const Navbar = () => {
                              
                                 <div className="navbar-container" >
                                     <div className="navbar-left">
-                                            <div className="nav-item profile-icon">
+                                            <div className="nav-item-public profile-icon">
                                                 <Link className="nav-link text-white" to="/dashboard"><i className="fa-solid fa-house"></i> Dashboard</Link>
                                             </div>
-                                            <div className="nav-item profile-icon">
+                                            <div className="nav-item-public profile-icon">
                                                 <Link className="nav-link text-white" to="/groups"><i className="fa-solid fa-user-group"></i> Groups</Link>
                                             </div>
                                     </div>
@@ -48,13 +48,13 @@ const Navbar = () => {
 
                                     {/* Profile Dropdown */}
                                         
-                                        <div className="dropdown-menu dropdown-menu-end navbar-right">
-                                            <div className="profile-icon">
-                                                <Link className="dropdown-item" to="/profile"><i className="fa-solid fa-user"></i> View Profile</Link>
+                                        <div className="dropdown-menu dropdown-menu-end navbar-right ">
+                                            <div className=" nav-item-public profile-icon">
+                                                <Link className="" to="/profile"><i className="fa-solid fa-user "></i> View Profile</Link>
                                             </div>
                                             
                                             <div><hr className="dropdown-divider" /></div>
-                                            <div className="logout-icon  " onClick={handleLogout}>
+                                            <div className="logout-icon   " onClick={handleLogout}>
                                                 <i className="fa-solid fa-right-from-bracket"> </i> Logout
                                             </div>
 
@@ -64,13 +64,13 @@ const Navbar = () => {
                            
                             
                         ) : (
-                            <div className="navbar-container">
+                            <div className="navbar-container-public">
                                 
                             
-                                <div className="nav-item">
+                                <div className="nav-item-public">
                                     <Link className="nav-link text-white" to="/login">🔑 Login</Link>
                                 </div>
-                                <div className="nav-item">
+                                <div className="nav-item-public">
                                     <Link className="nav-link text-white" to="/register">📝 Register</Link>
                                 </div>
                             </div>

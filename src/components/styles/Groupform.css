@@ -19,7 +19,7 @@
 }
 
 .group-button {
-    width: 20vw;
+    width: 30vw;
     height: 40px;  /* ✅ Increased height for better appearance */
     border-radius: 5px;
     border: none;
@@ -29,7 +29,8 @@
     font-weight: 600;
     cursor: pointer; /* ✅ Makes it clear that it's clickable */
     transition: all 0.2s ease-in-out; /* ✅ Smooth animation */
-    margin-right: 50vw;
+    margin-right: 40vw;
+    margin-left: 5vw;
 }
 
 /* ✅ Hover Effect */
@@ -43,4 +44,8 @@
 .group-button:active {
     transform: scale(0.95); /* Slight shrink on click */
     background-color: #004080; /* Even darker blue */
+}
+
+.group-form-section{
+    margin-left: 30px;
 }

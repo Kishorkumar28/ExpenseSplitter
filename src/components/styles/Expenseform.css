@@ -141,6 +141,10 @@
     color: #6c757d; /* Grayish text */
 }
 
+#No-balance-values{
+    width: 30vw;
+    margin-left: 40px;
+}
 .balances-list{
     margin-bottom: 5px;
 }

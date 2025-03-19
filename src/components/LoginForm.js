@@ -32,7 +32,7 @@ const LoginForm = () => {
             const response = await axios.post("http://localhost:5293/api/auth/login", values);
             dispatch(loginSuccess(response.data));
             toast.success("✅ Login successful! Redirecting...");
-            setTimeout(() => navigate("/dashboard"), 2000);
+            setTimeout(() => navigate("/dashboard"), 1000);
         } catch (error) {
             toast.error("❌ Login failed: " + (error.response?.data?.message || "Invalid credentials"));
         }

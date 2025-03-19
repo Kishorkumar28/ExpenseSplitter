@@ -1,6 +1,10 @@
 import React from "react";
 
 const ExpenseList = ({ expenses }) => {
+    if (!Array.isArray(expenses)) {
+        return <p>Loading expenses...</p>; // ✅ Handles cases where expenses is not an array
+    }
+
     return (
         <div className="all-expenses">
             <h1>All Expenses</h1>

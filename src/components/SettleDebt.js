@@ -44,7 +44,7 @@ const SettleDebt = ({ groupId, onDebtSettled }) => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            console.log("🔍 Balances Response:", response.data);
+            // console.log("🔍 Balances Response:", response.data);
 
             // ✅ Filter balances where the logged-in user is the debtor
             const userDebts = response.data.filter(debt => Number(debt.debtorId) === Number(userId));

@@ -82,6 +82,7 @@
 .signup-btn {
     background: #ff6f61;
     color: white;
+    width: 10vw !important;
 }
 
 .signup-btn:hover {
@@ -93,6 +94,7 @@
 .login-btn {
     background: #48c774;
     color: white;
+    width: 10vw !important;
 }
 
 .login-btn:hover {
