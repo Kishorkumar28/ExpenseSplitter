@@ -38,5 +38,7 @@
 }
 .app-container{
   background-color: rgb(248, 237, 221);
-  height: 100%;;
+  max-height: 50% !important;
+  
+  padding-bottom: 20% !important;
 }

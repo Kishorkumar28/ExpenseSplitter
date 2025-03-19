@@ -5,7 +5,7 @@
     align-items: center;
     gap: 20px;
     background-color: rgb(255, 255, 255);
-    height: 40px;
+    height: 40px !important;
 }
 
 .navbar-container-public{
@@ -15,7 +15,7 @@
     align-items: center;
     gap: 20px;
     background-color: rgb(255, 255, 255);
-    height: 40px;
+    height: 40px !important;
 }
 .nav-link {
     color: black !important;

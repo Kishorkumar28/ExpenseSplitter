@@ -158,6 +158,8 @@
 }
 
 #group-expenses{
+    padding-top: 20px;
+    margin-top: 0px !important;
     margin-left: 40px;
 }
 #group-balances{

@@ -24,27 +24,30 @@ const Profile = () => {
     };
 
     return (
-        <div className="profile-container">
-            <h2 className="profile-title">👤 My Profile</h2>
-            {user ? (
-                <div className="profile-info">
-                    <p><strong>Username:</strong> {user.username}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
+        <div className="profile-containers-div"  >
+                <div className="profile-container">
+                    <h2 className="profile-title">👤 My Profile</h2>
+                    {user ? (
+                        <div className="profile-info">
+                            <p><strong>Username:</strong> {user.username}</p>
+                            <p><strong>Email:</strong> {user.email}</p>
 
-                    {/* Profile Actions */}
-                    <div className="profile-actions">
-                        <Link to="/change-username" className="btn btn-warning">
-                            ✏️ Change Username
-                        </Link>
-                        <Link to="/change-password" className="btn btn-danger">
-                            🔒 Change Password
-                        </Link>
-                    </div>
+                            {/* Profile Actions */}
+                            <div className="profile-actions">
+                                <Link to="/change-username" className="btn btn-warning">
+                                    ✏️ Change Username
+                                </Link>
+                                <Link to="/change-password" className="btn btn-danger">
+                                    🔒 Change Password
+                                </Link>
+                            </div>
+                        </div>
+                    ) : (
+                        <p>Loading user details...</p>
+                    )}
                 </div>
-            ) : (
-                <p>Loading user details...</p>
-            )}
         </div>
+        
     );
 };
 
