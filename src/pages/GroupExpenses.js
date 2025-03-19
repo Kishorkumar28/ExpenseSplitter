@@ -11,6 +11,7 @@ import "../components/styles/Expenseform.css";
 const GroupExpenses = () => {
     const { groupId } = useParams();
     const token = useSelector((state) => state.auth.token);
+    const [groupName, setGroupName] = useState(""); // 🔹 New state for storing the group name
     const [expenses, setExpenses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -22,10 +23,28 @@ const GroupExpenses = () => {
             setLoading(false);
             return;
         }
+        fetchGroupDetails(); // 🔹 Fetch group details (including name)
         fetchExpenses();
         setupWebSocket(); // ✅ Initialize WebSocket
     }, [token, groupId]);
 
+    // 🔹 Function to fetch group details
+    const fetchGroupDetails = async () => {
+        if (!token) return;
+
+        try {
+            const response = await axios.get(
+                `http://localhost:5293/api/groups/${groupId}`,
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            setGroupName(response.data.name); // 🔹 Store the group name
+        } catch (error) {
+            setError("Failed to load group details.");
+        }
+    };
+
+    // 🔹 Function to fetch expenses
     const fetchExpenses = async () => {
         if (!token) {
             setError("Authentication required. Please log in.");
@@ -41,67 +60,54 @@ const GroupExpenses = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 
-            // console.log("✅ Fetched Expenses:", response.data);
             setExpenses(response.data);
         } catch (error) {
-            // console.error("❌ Error fetching expenses:", error);
             setError("Failed to load expenses. Please try again.");
         } finally {
             setLoading(false);
         }
     };
 
+    // 🔹 Setup WebSocket to listen for changes
     const setupWebSocket = () => {
         const ws = new WebSocket("ws://localhost:5293/ws");
 
-        ws.onopen = () => {
-            // console.log("✅ WebSocket Connected");
-            setSocket(ws);
-        };
+        ws.onopen = () => setSocket(ws);
 
         ws.onmessage = (event) => {
-            // console.log("📢 WebSocket Message Received:", event.data); //For Debugging
-
             if (event.data.startsWith("new_expense:")) {
                 const updatedGroupId = event.data.split(":")[1];
                 if (updatedGroupId === groupId) {
-                    // console.log("🔄 Fetching updated expenses...");
-                    fetchExpenses(); // ✅ Refresh expenses when a new expense is added
+                    fetchExpenses();
                 }
             }
 
             if (event.data === "debt_settled") {
-                // console.log("💰 Debt settled, refreshing balances...");
-                fetchExpenses(); // Refresh expenses
+                fetchExpenses();
             }
         };
 
-        ws.onclose = () => {
-            // console.log("⚠️ WebSocket Disconnected. Reconnecting in 3s...");
-            setTimeout(setupWebSocket, 3000);
-        };
+        ws.onclose = () => setTimeout(setupWebSocket, 3000);
     };
 
     return (
         <div className="container-expense-form">
-            <h1 id="group-expenses">Group Expenses</h1>
+            {/* 🔹 Display the group name dynamically */}
+            <h1 id="group-expenses">
+                Group Expenses {groupName ? `- ${groupName}` : ""}
+            </h1>
 
             {error && <div className="alert alert-danger">{error}</div>}
             {loading && <p>Loading expenses...</p>}
 
             {!loading && (
                 <>  
-                <div className="expense-and-settle">
-                    <ExpenseForm groupId={groupId} onExpenseAdded={fetchExpenses} />
-                    <SettleDebt groupId={groupId} onDebtSettled={fetchExpenses} />
-                </div>
-                <BalanceList groupId={groupId} />
-                
+                    <div className="expense-and-settle">
+                        <ExpenseForm groupId={groupId} onExpenseAdded={fetchExpenses} />
+                        <SettleDebt groupId={groupId} onDebtSettled={fetchExpenses} />
+                    </div>
+                    <BalanceList groupId={groupId} />
                     <ExpenseList expenses={expenses} />
-                    
-                
-                    
-                    
                 </>
             )}
         </div>
