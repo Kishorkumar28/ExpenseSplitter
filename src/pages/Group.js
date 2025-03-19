@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "../components/axiosInstance"; // ✅ Uses axios instance
+import axios from "../components/axiosInstance"; 
 import GroupForm from "../components/groups/GroupForm";
 import GroupList from "../components/groups/GroupList";
 import "../components/styles/Group.css"
@@ -38,7 +38,7 @@ const Groups = () => {
 
     return (
         <div className="container">
-            <h1>Groups section</h1>
+            <h1 id="groups-section-text">Groups section</h1>
             <GroupForm onGroupCreated={fetchGroups} />
             {loading ? <p>Loading groups...</p> : <GroupList groups={groups} refreshGroups={fetchGroups} />}
         </div>

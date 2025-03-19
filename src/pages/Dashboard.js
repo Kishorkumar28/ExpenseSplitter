@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "../components/axiosInstance"; // ✅ Uses global axios instance
+import axios from "../components/axiosInstance"; 
 import { toast } from "react-toastify";
 import "../components/styles/Dashboard.css";
 const Dashboard = () => {
@@ -93,7 +93,7 @@ const Dashboard = () => {
             {groups.length === 0 ? (
                 <p>You haven't joined any groups yet. <Link to="/groups">Join or create a group now!</Link></p>
             ) : (
-                <div className="list-group user-group">
+                <div className="list-group user-group-dashboard">
                     {groups.map((group) => (
                         <div key={group.groupId} className="list-group-item user-dash-groups">
                             <span title={group.name}>

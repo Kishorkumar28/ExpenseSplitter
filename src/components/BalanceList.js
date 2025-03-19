@@ -53,7 +53,7 @@ const BalanceList = ({ groupId }) => {
                 console.warn("⚠️ No balances found for this group.");
                 setBalances([]); // ✅ Prevents error message from displaying
             } else {
-                console.error("❌ Error fetching balances:", error);
+                // console.error("❌ Error fetching balances:", error);
                 setError("Failed to load balances.");
             }
         } finally {

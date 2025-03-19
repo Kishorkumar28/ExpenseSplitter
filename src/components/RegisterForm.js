@@ -2,9 +2,9 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../components/services/authService"; // ✅ Import API function
-import { toast } from "react-toastify"; // ✅ Import Toastify
-import "../components/styles/RegisterForm.css";  // ✅ Import flashy CSS
+import { registerUser } from "../components/services/authService"; 
+import { toast } from "react-toastify"; 
+import "../components/styles/RegisterForm.css";  
 
 const RegisterForm = () => {
     const navigate = useNavigate();

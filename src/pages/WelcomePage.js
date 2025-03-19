@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../components/styles/WelcomePage.css"; // Import the CSS
+import "../components/styles/WelcomePage.css"; 
 
 const WelcomePage = () => {
-    // ✅ Check if user is logged in (assuming token-based authentication)
-    const isLoggedIn = !!localStorage.getItem("token"); // or sessionStorage
+    // ✅ Check if user is logged in.
+    const isLoggedIn = !!localStorage.getItem("token"); 
 
     return (
         <div className="welcome-container">

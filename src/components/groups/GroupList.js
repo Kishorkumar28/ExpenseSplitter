@@ -70,7 +70,7 @@ const GroupList = () => {
 
     return (
         <div className="container">
-            <h2>My Joined Groups</h2>
+            <h2 id="my-joined-groups-text">My Joined Groups</h2>
             {error && <div className="alert alert-danger">{error}</div>}
             {loading ? <p>Loading groups...</p> : null}
 
@@ -88,7 +88,7 @@ const GroupList = () => {
 )}
 
 {/* ✅ Display Available Groups to Join */}
-<h3>Available Groups to Join</h3>
+<h2 id="groups-to-join-text">Available Groups to Join</h2>
 {availableGroups.length > 0 && (
     <div className="list-group user-group-join">
         {availableGroups.map((group) => {

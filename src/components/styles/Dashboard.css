@@ -35,7 +35,23 @@ body{
     overflow: hidden; /* ✅ Hides overflowing text */
     text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
     white-space: nowrap;
-    
+    padding-left: 20px !important;
+    padding-top: 10px !important;
+}
+
+.user-group-dashboard{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
+    justify-content: flex-start;  /* ✅ Centers items horizontally */
+      /* ✅ Adds spacing between items */
+    align-items: center !important;
+    background-color: white;
+    overflow: hidden; /* ✅ Hides overflowing text */
+    text-overflow: ellipsis; /* ✅ Shows "..." for overflow */
+    white-space: nowrap;
+    padding-left: 0px !important;
+    padding-top: 10px !important;
 }
 
 

@@ -4,7 +4,7 @@
 
 .user-group {
     height: 100% !important;
-    width: 100% !important;
+    width: 99% !important;
     display: flex;
     flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
     justify-content: flex-start;  /* ✅ Centers items horizontally */
@@ -12,13 +12,13 @@
     
 }
 .user-group-join {
-    width: 100% !important;
+    width: 99% !important;
     height: 100% !important;
     display: flex;
     flex-wrap: wrap;  /* ✅ Allows items to wrap to the next row */
     justify-content: flex-start;  /* ✅ Centers items horizontally */
     gap: 5px;  /* ✅ Adds spacing between items */
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .user-groups-join {
@@ -94,4 +94,14 @@
     cursor: not-allowed !important;  /* ✅ Show 'not-allowed' cursor */
     box-shadow: none !important;  /* ✅ Remove shadow */
     background-color: transparent !important;
+}
+
+#my-joined-groups-text{
+    padding-left: 30px !important;
+    padding-top: 20px !important;
+}
+
+#groups-to-join-text{
+    padding-left: 30px !important;
+    padding-top: 10px !important;
 }
