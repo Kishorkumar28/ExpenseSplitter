@@ -18,6 +18,10 @@ const GroupExpenses = () => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0); // ✅ Runs only once when the component mounts
+    }, []);
+    useEffect(() => {
+        
         if (!groupId) {
             setError("Invalid group. Please try again.");
             setLoading(false);
