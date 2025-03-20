@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -31,7 +31,7 @@ const GroupList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [socket, setSocket] = useState(null); // ✅ WebSocket state
-
+    const socketRef = useRef(null);
     // ✅ Get the logged-in user ID
     const decodedToken = token ? decodeToken(token) : null;
     const userId = decodedToken?.nameid; // ✅ Extract user ID from token
@@ -40,8 +40,14 @@ const GroupList = () => {
         if (token) {
             fetchJoinedGroups();
             fetchInvitations();
-            setupWebSocket(); // ✅ Setup WebSocket for real-time updates
+            setupWebSocket();  // ✅ Set up WebSocket only once
         }
+
+        return () => {
+            if (socketRef.current) {
+                socketRef.current.close();
+            }
+        };
     }, [token]);
 
     const fetchJoinedGroups = async () => {
@@ -70,11 +76,13 @@ const GroupList = () => {
 
     // ✅ WebSocket setup for real-time invitations
     const setupWebSocket = () => {
+        if (socketRef.current) return;  // ✅ Prevent multiple connections
+
         const ws = new WebSocket("ws://localhost:5293/ws");
 
         ws.onopen = () => {
             console.log("✅ WebSocket Connected");
-            setSocket(ws);
+            socketRef.current = ws;
         };
 
         ws.onmessage = (event) => {
@@ -82,19 +90,23 @@ const GroupList = () => {
 
             if (event.data.startsWith("new_invitation:")) {
                 const parts = event.data.split(":");
-                const recipientId = parts[1];  // ✅ Extract recipient user ID
-                const groupName = parts.length > 2 ? parts[2] : "a new group";  // ✅ Extract group name if available
+                const recipientId = parts[1];
+                const groupName = parts.length > 2 ? parts[2] : "a new group";
 
-                // ✅ Only show toast if the logged-in user is the recipient
                 if (recipientId === userId) {
-                    fetchInvitations(); // ✅ Refresh invitations
-                    toast.info(`📩 You received an invitation to join ${groupName}!`);
+                    fetchInvitations();
+
+                    // ✅ Avoid duplicate toasts using a timeout
+                    setTimeout(() => {
+                        toast.info(`📩 You received an invitation to join ${groupName}!`);
+                    }, 100);
                 }
             }
         };
 
         ws.onclose = () => {
             console.log("⚠️ WebSocket Disconnected. Reconnecting in 3s...");
+            socketRef.current = null;
             setTimeout(setupWebSocket, 3000);
         };
     };

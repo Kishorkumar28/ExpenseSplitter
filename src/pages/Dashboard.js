@@ -91,7 +91,7 @@ const Dashboard = () => {
             </div>
             
             {groups.length === 0 ? (
-                <p>You haven't joined any groups yet. <Link to="/groups">Join or create a group now!</Link></p>
+                <h2 className="empty-joined-groups-text" >You haven't joined any groups yet. <Link to="/groups">Join or create a group now!</Link></h2>
             ) : (
                 <div className="list-group user-group-dashboard">
                     {groups.map((group) => (

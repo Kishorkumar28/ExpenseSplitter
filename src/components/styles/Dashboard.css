@@ -105,3 +105,8 @@ body{
 .view-group-btn:active {
     transform: scale(1);  /* Shrinks slightly when clicked */
 }
+
+.empty-joined-groups-text{
+    margin-left: 50px !important;
+    margin-top: 60px;
+}
