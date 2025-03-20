@@ -41,7 +41,7 @@ const RegisterForm = () => {
 
     return (
         <div className="register-container"> {/* ✅ Apply Flashy UI */}
-            <div className="register-animated-bg"></div> {/* ✅ Animated Background */}
+            <div className="animated-bg"></div> {/* ✅ Animated Background */}
             <div className="register-card">
                 <h2 className="register-title">📝 Create Your Account</h2>
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
